@@ -1,0 +1,52 @@
+import pandas as pd
+import numpy as np
+
+# List all the counties in Florida
+florida_counties = [
+    "Alachua", "Baker", "Bay", "Bradford", "Brevard", "Broward", "Calhoun", 
+    "Charlotte", "Citrus", "Clay", "Collier", "Columbia", "DeSoto", "Dixie", 
+    "Duval", "Escambia", "Flagler", "Franklin", "Gadsden", "Gilchrist", 
+    "Glades", "Gulf", "Hamilton", "Hardee", "Hendry", "Hernando", "Highlands", 
+    "Hillsborough", "Holmes", "Indian River", "Jackson", "Jefferson", "Lafayette", 
+    "Lake", "Lee", "Leon", "Levy", "Liberty", "Madison", "Manatee", "Marion", 
+    "Martin", "Miami-Dade", "Monroe", "Nassau", "Okaloosa", "Okeechobee", "Orange", 
+    "Osceola", "Palm Beach", "Pasco", "Pinellas", "Polk", "Putnam", "Santa Rosa", 
+    "Sarasota", "Seminole", "St. Johns", "St. Lucie", "Sumter", "Suwannee", "Taylor", 
+    "Union", "Volusia", "Wakulla", "Walton", "Washington"
+]
+
+# Number of counties
+num_counties = len(florida_counties)
+
+# Create a dictionary to representing the blueprint of the dataset
+data = {
+    "Region #": np.random.randint(1, 5, num_counties),  # Random region number between 1 and 4
+    "Name": florida_counties,  # County names
+    "Number of Opioid Fatalities 2021": np.random.randint(50, 2000, num_counties),  # Random number of fatalities
+    "Opioid Fatality Rate per 100K Capita": np.round(np.random.uniform(5.0, 50.0, num_counties), 1),  # Random fatality rate
+    "Census 2022": np.random.randint(50000, 1000000, num_counties),  # Random census data
+    "State Population Percentage": np.round(np.random.uniform(0.01, 0.5, num_counties), 4),  # Random state population percentage
+    "State Pop Rank": np.random.randint(1, num_counties + 1, num_counties),  # Random state population rank
+    "State Opioid Fatality Rank(2021)": np.random.randint(1, num_counties + 1, num_counties),  # Random opioid fatality rank
+    "Social Vulnerability Index(SVI) Score 2020": np.round(np.random.uniform(0.1, 1.0, num_counties), 4),  # Random SVI score
+    "Number of Opioid Overdose Emerg Dpt Cases 2022": np.random.randint(10, 2000, num_counties),  # Random number of cases
+    "% Uninsured Adults": np.random.randint(5, 25, num_counties),  # Random uninsured adults percentage
+    "% Disconnected Youth": np.random.randint(0, 10, num_counties),  # Random disconnected youth percentage
+    "Homicide Rate (IL)": np.random.randint(0, 20, num_counties),  # Random homicide rate
+    "Homicide Rate (Black)": np.random.randint(0, 50, num_counties),  # Random homicide rate for Black population
+    "Homicide Rate (Hispanic)": np.random.randint(0, 30, num_counties),  # Random homicide rate for Hispanic population
+    "Homicide Rate (white)": np.random.randint(0, 15, num_counties),  # Random homicide rate for White population
+    "Firearm Fatalities Rate (Black)": np.random.randint(0, 60, num_counties),  # Random firearm fatalities rate for Black population
+    "Firearm Fatalities Rate (Hispanic)": np.random.randint(0, 35, num_counties),  # Random firearm fatalities rate for Hispanic population
+    "Juvenile Arrest Rate": np.random.randint(0, 20, num_counties),  # Random juvenile arrest rate
+    "% rural": np.round(np.random.uniform(0.0, 100.0, num_counties), 1)  # Random percentage rural
+}
+
+# Create DataFrame
+florida_data = pd.DataFrame(data)
+
+# Display the generated DataFrame
+print(florida_data)
+
+# Save to an Excel file
+florida_data.to_excel('Florida_County_Data.xlsx', index=False)
